@@ -1,6 +1,4 @@
 # Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
-
-#items2 = [4,5,6,7,1,8,10]
 items=[]
 n = 0
 i = 0
