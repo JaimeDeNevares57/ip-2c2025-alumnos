@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Ordenamientos — Python externo</title>
+    <link rel="stylesheet" href="style.css" />    
+    <script src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js" defer></script>
+  </head>
+  <body>
+    <header> <!------- ENCABEZADO -------->
+      <h1>Visualizador de Ordenamientos</h1>
+      <span class="pill">Python externo (algorithms/sort_*.py)</span>
+    </header>
+  <!---------------- CONTENEDOR PRINCIPAL -------------->
+    <main>
+      <section class="controls">
+        <!----Contenedor de Selector de Datasets----->
+        <div class="card">
+          <label>Dataset</label>
+          <div class="row">
+            <select id="mode"> <!--Tipo de datasets-->
+              <option value="bars">Barras (números)</option>
+              <option value="imageCols">Imagen por columnas (extensión)</option>
+            </select>
+            <select id="algorithm" title="Carga algorithms/sort_<valor>.py"> <!--Tipo de algoritmo-->
+              <option value="bubble">Bubble Sort (PY)</option>
+              <option value="insertion">Insertion Sort (PY)</option>
+              <option value="selection">Selection Sort (PY)</option>
+              <option value="quick">Quick Sort (PY)</option>
+              <option value="merge">Merge Sort (PY)</option>
+            </select>
+          </div>
+        </div>
+        <!----Contenedor de Selector Velocidad-Tamaño----->
+        <div class="card">
+          <label>Tamaño y velocidad</label>
+          <div class="row">
+            <div style="flex:2">
+              <small class="pill">Cantidad</small>
+              <input id="size" type="range" min="5" max="150" value="60" />
+            </div>
+            <span id="sizeVal" class="pill">60</span>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <div style="flex:2">
+              <small class="pill">Velocidad (ms entre pasos)</small>
+              <input id="speed" type="range" min="0" max="400" step="10" value="50" />
+            </div>
+            <span id="speedVal" class="pill">50 ms</span>
+          </div>
+        </div>
+        <!----Selector de imagen (aparece solo si elegis imagen)----->
+        <div class="card" id="imageCard" style="display:none">
+          <label>Imagen (solo en modo “Imagen por columnas”)</label>
+          <input id="imageFile" type="file" accept="image/*" />
+          <small class="pill">Se corta en <span id="imgCols">60</span> columnas y se ordena por índice original.</small>
+        </div>
+        <!----Contenedor de Botones de Acciones---->  
+        <div class="card">
+          <label>Acciones</label>
+          <div class="btns">
+            <button id="shuffle">Mezclar</button>
+            <button id="play" class="primary">Reproducir</button>
+            <button id="step">Paso</button>
+            <button id="pause">Pausa</button>
+            <button id="reset">Reset</button>
+            <button id="reloadPy">Recargar Python</button>
+          </div>
+          <div style="margin-top:8px">Ejecución: <span class="pill" id="modeExec">Python</span></div>
+        </div>
+      </section>
+
+      <section id="canvasWrap"> </section>
+      <!---------------- PIE DE PAGINA -------------->
+      <div class="footer">
+        Colocá tus algoritmos en <span class="kbd">algorithms/sort_*.py</span> con <span class="kbd">init(vals)</span> y <span class="kbd">step()</span>. Inicia con
+        <span class="kbd">python -m http.server</span> y abrí <span class="kbd">http://localhost:8000</span>.
+      </div>
+    </main>
+  </body>
+</html>
