@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visualizador de Ordenamientos — Python externo</title>
-    <link rel="stylesheet" href="style.css" />    
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" href="assets/logo.png" type="image/png">
     <script src="app.js" defer></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js" defer></script>
   </head>
   <body>
-    <header> <!------- ENCABEZADO -------->
+    <audio id="music" src="assets/music1.mp3" preload="auto"></audio>
+    <!------- ENCABEZADO -------->
+    <header> <a href="index.html" class="pill" style="margin-right: 10px;">🏠 Menú</a>
       <h1>Visualizador de Ordenamientos</h1>
       <span class="pill">Python externo (algorithms/sort_*.py)</span>
     </header>
@@ -19,7 +22,7 @@
       <section class="controls">
         <!----Contenedor de Selector de Datasets----->
         <div class="card">
-          <label>Dataset</label>
+          <label>Dataset y Algoritmo</label>
           <div class="row">
             <select id="mode"> <!--Tipo de datasets-->
               <option value="bars">Barras (números)</option>
@@ -50,6 +53,24 @@
               <input id="speed" type="range" min="0" max="400" step="10" value="50" />
             </div>
             <span id="speedVal" class="pill">50 ms</span>
+          </div>
+        </div>
+        <!----Contenedor de métricas----->
+        <div class="card counter-card">
+          <label>Estadísticas de Ejecución</label>
+          <div class="counters">
+            <div class="counter-item">
+              <span class="value" id="countTime">0.000</span>
+              <span class="label">Tiempo (s)</span>
+            </div>
+            <div class="counter-item">
+              <span class="value" id="countComp">0</span>
+              <span class="label">Comparaciones</span>
+            </div>
+            <div class="counter-item">
+              <span class="value" id="countSwap">0</span>
+              <span class="label">Intercambios (Swaps)</span>
+            </div>
           </div>
         </div>
         <!----Selector de imagen (aparece solo si elegis imagen)----->

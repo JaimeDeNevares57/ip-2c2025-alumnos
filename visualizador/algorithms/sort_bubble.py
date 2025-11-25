@@ -1,41 +1,80 @@
-# Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
-items=[]
+# =========================================================
+# BUBBLE SORT - IMPLEMENTACIÓN ROBUSTA CON CONTADORES
+# Contrato de retorno extendido: 
+# {"a": int, "b": int, "swap": bool, "done": bool, "comp_count": int, "swap_count": int}
+# =========================================================
+
+# Variables de estado del algoritmo
+items = []
 n = 0
-i = 0
-j = 0
+i = 0  # Índice de pasadas (elementos ya ordenados al final)
+j = 0  # Índice de comparación actual (la "burbuja")
+
+# Variables de rendimiento
+comparison_count = 0 
+swap_count = 0      
 
 def init(vals):
-    global items, n, i, j
-    items = list(vals) #copia la lista de valores
+    # Declaramos globales las variables de estado y rendimiento
+    global items, n, i, j, comparison_count, swap_count
+    
+    items = list(vals)
     n = len(items)
-    i = 0 #cantidad de pasadas por la lista
-    j = 0 #indices a comparar
+    i = 0  # Reiniciar pasadas
+    j = 0  # Reiniciar puntero de burbuja
+    
+    # Reinicialización de contadores
+    comparison_count = 0 
+    swap_count = 0
 
 def step():
-    global items, n, i, j
-    # 1. Revisar si terminamos todas las pasadas dentro de la lista (n-1 final de la lista)
-    if i >= n - 1:
-        return {"done": True}
-
-    swap = False # 2. Definir estado por defecto para este paso
+    # Declaramos globales las variables que vamos a modificar
+    global items, n, i, j, comparison_count, swap_count
     
-    # 3. Definir los índices 'a' y 'b' a comparar (según el contrato)
-    a = j            # Siempre comparamos j y j+1 (dos indices)
+    # 1. Revisar si terminamos todas las pasadas (n-1 pasadas son necesarias)
+    if i >= n - 1:
+        # Fin del algoritmo
+        return {
+            "done": True, 
+            "a": None, "b": None, 
+            "swap": False, 
+            "comp_count": comparison_count, 
+            "swap_count": swap_count
+        }
+
+    swap = False 
+    
+    # Los índices a comparar son j y j+1
+    a = j 
     b = j + 1
 
-    # 4. Ejecutar la lógica de Bubble Sort
+    # 2. Lógica de Bubble Sort
+    
+    # INCREMENTO 1: Cada vez que entramos aquí es una comparación de elementos.
+    comparison_count += 1
+    
     if items[a] > items[b]:
-        items[a], items[b] = items[b], items[a]  # Intercambiar
-        swap = True #mando swap=true para visualizar el intercambio
+        items[a], items[b] = items[b], items[a]  # Intercambiar en el array interno
+        swap = True 
+        
+        # INCREMENTO 2: Solo incrementamos si realmente hubo un intercambio.
+        swap_count += 1 
 
-    # 5. Avanzar los punteros (índices) para el próximo paso
+    # 3. Avanzar los punteros (índices) para el próximo paso
     j += 1
 
-    # 6. Revisar si la "burbuja" (j) llegó al final de la parte no ordenada
-    # La parte no ordenada es n - 1 - i (i es lo que ya ordenamos)
+    # 4. Revisar si la burbuja (j) llegó al final de la parte no ordenada
+    # El final de la pasada es (n - 1 - i)
     if j >= n - 1 - i:
-        j = 0      # Reiniciamos la burbuja para la siguiente pasada
-        i += 1     # Avanzamos a la siguiente pasada
+        j = 0     # Reiniciamos la burbuja al inicio del array
+        i += 1    # Avanzamos a la siguiente pasada (la última posición ya está ordenada)
 
-    # Devolvemos los índices 'a' y 'b' que acabamos de comparar
-    return {"a": a, "b": b, "swap": swap, "done": False}
+    # 5. Devolver los resultados del paso
+    return {
+        "a": a, 
+        "b": b, 
+        "swap": swap, 
+        "done": False,
+        "comp_count": comparison_count,
+        "swap_count": swap_count
+    }
