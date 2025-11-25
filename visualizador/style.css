@@ -1,0 +1,286 @@
+/* ==================================== */
+/* 1. Variables y Reset Global          */
+/* ==================================== */
+:root { 
+    /* Colores del tema oscuro */
+    --bg:#21295C;         /* Fondo principal degradado (oscuro azulado) */
+    --panel:#061c41;      /* Fondo de tarjetas y paneles */
+    --muted:#94a3b8;      /* Texto secundario, descripciones */
+    --text:#e2e8f0;       /* Texto principal (blanco roto) */
+    --accent:#22d3ee;     /* Color de acento (cian brillante) */
+}
+*{
+    box-sizing:border-box; /* Modelo de caja uniforme */
+}
+body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;
+    /* Degradado de fondo con el color de acento */
+    background:linear-gradient(180deg,#0b1220,var(--bg));
+    color:var(--text);
+    min-height:100vh;
+    display:grid;
+    grid-template-rows:auto 1fr; /* Header (auto) y Contenido principal (1fr) */
+}
+
+/* ==================================== */
+/* 2. Encabezado (Header) y Títulos     */
+/* ==================================== */
+header{
+    padding:16px 20px;
+    border-bottom:1px solid #1f2937;
+    /* Fondo semi-transparente con efecto blur (fácil de leer sobre el degradado) */
+    background:rgba(17,24,39,.75);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+h1{
+    font-size:18px;
+    margin:0;
+    letter-spacing:.3px;
+}
+.pill{
+    padding:4px 10px;
+    border-radius:999px; /* Totalmente redondeado */
+    background:#1f2937;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ==================================== */
+/* 3. Layout Principal (Main)           */
+/* ==================================== */
+main{
+    padding:12px 16px 20px;
+    display:grid;
+    /* Filas: Controles, Canvas, Footer */
+    grid-template-rows:auto 1fr auto; 
+    gap:12px;
+}
+
+/* Contenedor de los selectores y botones */
+.controls{
+    display:grid;
+    /* Columnas adaptables: mínimo 260px por columna */
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:10px;
+    width:100%;
+}
+
+/* Tarjetas de control (filtros, sliders, acciones) */
+.card{
+    background:var(--panel);
+    border:1px solid #1f2937;
+    border-radius:14px;
+    padding:12px;
+}
+
+/* ==================================== */
+/* 4. Formularios y Entradas            */
+/* ==================================== */
+label{
+    font-size:12px;
+    color:var(--muted);
+    display:block;
+    margin-bottom:6px;
+}
+select,input[type=range],input[type=file]{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0b1220;
+    color:var(--text);
+}
+.row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.row>*{
+    flex:1; /* Hace que los elementos dentro de .row ocupen el mismo espacio */
+}
+
+/* ==================================== */
+/* 5. Botones y Acciones                */
+/* ==================================== */
+.btns{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+button{
+    background:#0b1220;
+    color:var(--text);
+    border:1px solid #334155;
+    padding:10px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:transform .06s ease,border-color .2s ease;
+}
+button:hover{
+    border-color:var(--accent);
+}
+button:active{
+    transform:translateY(1px); /* Efecto de 'presión' al hacer click */
+}
+button.primary{
+    border-color:var(--accent);
+    box-shadow:inset 0 0 0 1px var(--accent);
+}
+
+/* ==================================== */
+/* 6. Contenedor de Visualización (Canvas) */
+/* ==================================== */
+#canvasWrap{
+    background:#0b1220;
+    border:1px dashed #334155;
+    border-radius:16px;
+    padding:10px;
+    position:relative;
+}
+#view{
+    width:100%;
+    height:64vh;
+    display:block;
+    border-radius:10px;
+    /* Fondo del canvas con gradientes radiales sutiles para un efecto estético */
+    background:radial-gradient(1000px 500px at 20% -10%,rgba(34,211,238,.08),transparent 70%),radial-gradient(900px 500px at 80% 110%,rgba(167,139,250,.08),transparent 70%),#0a0f1d;
+}
+
+/* ==================================== */
+/* 7. Pie de página (Footer) y Utilitarios */
+/* ==================================== */
+.footer{
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+    padding:8px 0;
+}
+.kbd{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; /* Fuente monoespaciada */
+    background:#0b1220;
+    border:1px solid #334155;
+    padding:2px 6px;
+    border-radius:6px;
+}
+
+/* Menú principal */
+.menu-bg {
+    background-image: url('assets/wp.png');
+}
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    padding: 20px;
+    text-align: center;
+    }
+    .menu-title {
+    font-size: 3rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    }
+    .menu-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    }
+    .menu-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+    justify-content: center;
+    }
+    .menu-btn {
+    display: block;
+    width: 200px;
+    height: 150px;
+    background: var(--panel);
+    border: 2px solid var(--muted);
+    border-radius: 14px;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .menu-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(34, 211, 238, 0.15);
+    }
+    .menu-btn span {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    color: var(--accent);
+    }
+
+/* ==================================== */
+/* Estilos Específicos del Visualizador */
+/* ==================================== */
+
+/* Contenedor de las estadísticas */
+.counters {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: center;
+}
+
+.counter-item {
+    flex-grow: 1;
+    padding: 8px 4px;
+    border-radius: 8px;
+    background: #0b1220; /* Fondo más oscuro para destacar */
+}
+
+.counter-item .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent); /* Color de acento para los números */
+    margin-bottom: 2px;
+}
+
+.counter-item .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* Estilo para mostrar el valor entero de las barras */
+.bar-value {
+    position: absolute;
+    bottom: 5px; /* Ajusta la posición sobre la barra */
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text);
+    font-size: 0.7rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1px 4px;
+    border-radius: 4px;
+    z-index: 10;
+    pointer-events: none; /* Ignora clics */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Al pasar el ratón por el contenedor (canvasWrap), mostramos los valores */
+#canvasWrap:hover .bar-value {
+    opacity: 1; 
+}

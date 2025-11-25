@@ -23,14 +23,13 @@ def step():
         j = i
         return {"a": i, "b": j, "swap": False, "done": False}
     # - Mientras j > 0 y items[j-1] > items[j]: hacer UN swap adyacente (j-1, j) y devolverlo con swap=True.
-    if j > 0: 
-        if items[j-1] > items[j]:
-            items[j], items[j-1] = items[j-1], items[j]
-            return {"a": j, "b": j-1, "swap": True, "done": False}       
-    j = j-1   
+    if j > 0:
+        while items[j-1] > items[j]:
+            items[j], items[j-1] = items[j-1], items[j]       
+            return {"a": j, "b": j-1, "swap": True, "done": False}
+    j = j-1
+    # - Si ya no hay que desplazar: avanzar i y setear j=None.
     if items[j] > items[j-1]:
         i = i + 1
-        j = i
-    return {"done": False}    
-    # - Si ya no hay que desplazar: avanzar i y setear j=None.
-  
+        j = None
+    return {"done": False, "swap": False}
