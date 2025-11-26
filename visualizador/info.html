@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SortVisor - Análisis de Complejidad</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="pill" style="margin-right: 10px;">🏠 Menú Principal</a>
+        <h1>Análisis y Conceptos</h1>
+    </header>
+    
+    <main>
+        <div class="content-container">
+            
+            <!-- SECCIÓN 1: BIG O EXPLICADO -->
+            <section class="concept-section card">
+                <h2 class="section-title">¿Qué es la Notación Big O?</h2>
+                <p style="color: var(--text); line-height: 1.6;">
+                    Imagina que tienes que buscar un nombre en una guía telefónica. La <strong>Notación Big O</strong> es una forma de medir cómo aumenta el "tiempo de sufrimiento" (o de procesamiento) a medida que la guía telefónica se hace más y más gruesa. No mide segundos exactos, sino <strong>tendencias de crecimiento</strong>.
+                </p>
+
+                <div class="big-o-grid">
+                    <div class="o-card">
+                        <span class="o-title" style="color: #4ade80;">O(1)</span>
+                        <span class="o-desc">Instantáneo. Sabes exactamente dónde está el dato. No importa si hay 10 o 1 millón de datos.</span>
+                    </div>
+                    <div class="o-card">
+                        <span class="o-title" style="color: #a3e635;">O(log n)</span>
+                        <span class="o-desc">Divide y Vencerás. Como buscar en la guía abriendo por la mitad una y otra vez. Muy rápido.</span>
+                    </div>
+                    <div class="o-card">
+                        <span class="o-title" style="color: #facc15;">O(n)</span>
+                        <span class="o-desc">Lineal. Tienes que leer cada página una por una. Si duplicas datos, duplicas tiempo.</span>
+                    </div>
+                    <div class="o-card">
+                        <span class="o-title" style="color: #f87171;">O(n²)</span>
+                        <span class="o-desc">Cuadrático. Comparar "todos contra todos". Extremadamente lento con muchos datos.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: ALGORITMOS AL DETALLE -->
+            <section class="concept-section">
+                <h2 class="section-title">Los Algoritmos Explicados</h2>
+                
+                <div class="algo-detail">
+                    
+                    <!-- Bubble Sort -->
+                    <div class="algo-item">
+                        <div class="algo-icon">🫧</div>
+                        <div class="algo-content">
+                            <h3>Bubble Sort (Ordenamiento Burbuja)</h3>
+                            <p>Funciona comparando pares adyacentes y empujando el más grande hacia la derecha, como una burbuja subiendo a la superficie. Repite esto una y otra vez.</p>
+                            <div class="tags">
+                                <span class="tag">Principiante</span>
+                                <span class="tag">Muy Lento O(n²)</span>
+                                <span class="tag">Intuitivo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insertion Sort -->
+                    <div class="algo-item">
+                        <div class="algo-icon">🃏</div>
+                        <div class="algo-content">
+                            <h3>Insertion Sort (Inserción)</h3>
+                            <p>Es como ordenar cartas en tu mano. Tomas una carta desordenada y la insertas en la posición correcta entre las que ya tienes ordenadas a la izquierda.</p>
+                            <div class="tags">
+                                <span class="tag">Útil para listas pequeñas</span>
+                                <span class="tag">Lento O(n²)</span>
+                                <span class="tag">Natural</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selection Sort -->
+                    <div class="algo-item">
+                        <div class="algo-icon">🔍</div>
+                        <div class="algo-content">
+                            <h3>Selection Sort (Selección)</h3>
+                            <p>Divide la lista en dos partes: ordenada y desordenada. Busca incansablemente el número más pequeño de la parte desordenada y lo mueve al final de la ordenada.</p>
+                            <div class="tags">
+                                <span class="tag">Ineficiente</span>
+                                <span class="tag">Lento O(n²)</span>
+                                <span class="tag">Fácil de programar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Merge Sort -->
+                    <div class="algo-item">
+                        <div class="algo-icon">🤝</div>
+                        <div class="algo-content">
+                            <h3>Merge Sort (Fusión)</h3>
+                            <p>Usa la estrategia "Divide y Vencerás". Corta la lista en mitades recursivamente hasta tener elementos individuales, y luego los fusiona (Merge) ordenadamente al volver a unirlos.</p>
+                            <div class="tags">
+                                <span class="tag">Profesional</span>
+                                <span class="tag">Rápido O(n log n)</span>
+                                <span class="tag">Estable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Sort -->
+                    <div class="algo-item">
+                        <div class="algo-icon">⚡</div>
+                        <div class="algo-content">
+                            <h3>Quick Sort (Rápido)</h3>
+                            <p>El rey de la velocidad. Elige un "pivote" (un número de referencia) y lanza todos los números menores a su izquierda y los mayores a su derecha. Repite el proceso en cada lado.</p>
+                            <div class="tags">
+                                <span class="tag">Estándar de la industria</span>
+                                <span class="tag">Muy Rápido O(n log n)</span>
+                                <span class="tag">Complejo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="footer">
+        © 2024 SortVisor. Aprende jugando.
+    </div>
+</body>
+</html>

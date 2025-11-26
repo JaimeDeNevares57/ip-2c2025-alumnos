@@ -3,9 +3,9 @@
 /* ==================================== */
 :root { 
     /* Colores del tema oscuro */
-    --bg:#21295C;         /* Fondo principal degradado (oscuro azulado) */
-    --panel:#061c41;      /* Fondo de tarjetas y paneles */
-    --muted:#94a3b8;      /* Texto secundario, descripciones */
+    --bg:#0f2342;         /* Fondo principal degradado (oscuro azulado) */
+    --panel:#142442;      /* Fondo de tarjetas y paneles */
+    --muted:#ffffff;      /* Texto secundario, descripciones */
     --text:#e2e8f0;       /* Texto principal (blanco roto) */
     --accent:#22d3ee;     /* Color de acento (cian brillante) */
 }
@@ -16,7 +16,7 @@ body{
     margin:0;
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;
     /* Degradado de fondo con el color de acento */
-    background:linear-gradient(180deg,#0b1220,var(--bg));
+    background:linear-gradient(180deg,#09192c,var(--bg));
     color:var(--text);
     min-height:100vh;
     display:grid;
@@ -30,7 +30,7 @@ header{
     padding:16px 20px;
     border-bottom:1px solid #1f2937;
     /* Fondo semi-transparente con efecto blur (fácil de leer sobre el degradado) */
-    background:rgba(17,24,39,.75);
+    background: var(--bg);
     backdrop-filter:blur(6px);
     display:flex;
     align-items:center;
@@ -45,7 +45,7 @@ h1{
 .pill{
     padding:4px 10px;
     border-radius:999px; /* Totalmente redondeado */
-    background:#1f2937;
+    background:#1a2b46;
     color:var(--muted);
     font-size:12px;
 }
@@ -92,7 +92,7 @@ select,input[type=range],input[type=file]{
     padding:10px;
     border-radius:10px;
     border:1px solid #334155;
-    background:#0b1220;
+    background:#023050;
     color:var(--text);
 }
 .row{
@@ -113,7 +113,7 @@ select,input[type=range],input[type=file]{
     gap:10px;
 }
 button{
-    background:#0b1220;
+    background:#0c172e;
     color:var(--text);
     border:1px solid #334155;
     padding:10px 14px;
@@ -284,3 +284,50 @@ button.primary{
 #canvasWrap:hover .bar-value {
     opacity: 1; 
 }
+/* ESTILOS PARA LA PAGINA DE RANKINGS */
+.ranking-container { padding: 20px; max-width: 1000px; margin: 0 auto; }
+.ranking-header { text-align: center; margin-bottom: 40px; }
+.ranking-header h2 { font-size: 2.5rem; color: var(--accent); margin: 0; }
+.ranking-header p { color: var(--muted); margin-top: 10px; }
+
+/* Estilos del Podio */
+.podium { display: flex; justify-content: center; align-items: flex-end; gap: 20px; margin-bottom: 50px; }
+.podium-item { text-align: center; width: 120px; }
+.podium-bar { background: var(--panel); border: 2px solid var(--accent); border-bottom: 0; border-radius: 10px 10px 0 0; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; transition: transform 0.2s; }
+.podium-bar:hover { transform: translateY(-5px); background: #1f2937; }
+.rank-1 { height: 180px; background: linear-gradient(to top, var(--panel), rgba(34, 211, 238, 0.2)); border-color: #ffd700; } /* Oro */
+.rank-2 { height: 130px; border-color: #c0c0c0; } /* Plata */
+.rank-3 { height: 90px; border-color: #cd7f32; } /* Bronce */
+
+.medal { font-size: 2rem; margin-bottom: 10px; display: block; }
+.algo-title { font-weight: bold; color: var(--text); margin-top: 10px; display: block; }
+
+/* Tabla de Detalles */
+.comparison-table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 14px; overflow: hidden; border: 1px solid #1f2937; }
+.comparison-table th, .comparison-table td { padding: 15px; text-align: left; border-bottom: 1px solid #1f2937; }
+.comparison-table th { background: rgba(17, 24, 39, 0.95); color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
+.comparison-table tr:hover { background: rgba(255,255,255,0.02); }
+.tag { padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; }
+.tag-fast { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+.tag-med { background: rgba(250, 204, 21, 0.2); color: #facc15; }
+.tag-slow { background: rgba(248, 113, 113, 0.2); color: #f87171; }
+
+.content-container { padding: 20px; max-width: 900px; margin: 0 auto; }
+        
+/* Estilos para las explicaciones */
+.concept-section { margin-bottom: 40px; }
+.section-title { font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; border-bottom: 1px solid #1f2937; padding-bottom: 10px; }
+
+.big-o-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+.o-card { background: rgba(17, 24, 39, 0.5); border: 1px solid #334155; padding: 15px; border-radius: 10px; text-align: center; transition: transform 0.2s; }
+.o-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.o-title { font-family: monospace; font-size: 1.2rem; font-weight: bold; color: var(--text); display: block; margin-bottom: 5px; }
+.o-desc { font-size: 0.9rem; color: var(--muted); }
+
+.algo-detail { display: flex; flex-direction: column; gap: 20px; }
+.algo-item { background: var(--panel); border: 1px solid #1f2937; border-radius: 14px; padding: 20px; display: flex; gap: 20px; align-items: flex-start; }
+.algo-icon { font-size: 2.5rem; background: #0b1220; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+.algo-content h3 { margin: 0 0 5px 0; color: var(--text); }
+.algo-content p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 0.95rem; }
+.tags { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: #1f2937; color: var(--accent); border: 1px solid rgba(34, 211, 238, 0.2); }
