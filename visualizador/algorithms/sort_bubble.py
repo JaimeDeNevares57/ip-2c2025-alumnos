@@ -70,11 +70,4 @@ def step():
         i += 1    # Avanzamos a la siguiente pasada (la última posición ya está ordenada)
 
     # 5. Devolver los resultados del paso
-    return {
-        "a": a, 
-        "b": b, 
-        "swap": swap, 
-        "done": False,
-        "comp_count": comparison_count,
-        "swap_count": swap_count
-    }
+    return {"a": a,"b": b, "swap": swap, "done": False, "comp_count": comparison_count, "swap_count": swap_count}
