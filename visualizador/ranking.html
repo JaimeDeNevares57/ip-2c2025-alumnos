@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SortVisor - Rankings</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <a href="index.html" class="pill" style="margin-right: 10px;">🏠 Menú Principal</a>
+        <h1>Rankings de Eficiencia</h1>
+    </header>
+    
+    <main>
+        <section class="ranking-container">
+            <div class="ranking-header">
+                <h2>Top 5 Algoritmos</h2>
+                <p>Clasificación basada en velocidad, eficiencia y uso en el mundo real.</p>
+            </div>
+
+            <!-- PODIO VISUAL -->
+            <div class="podium">
+                <!-- 2do Lugar -->
+                <div class="podium-item">
+                    <span class="algo-title">Merge Sort</span>
+                    <div class="podium-bar rank-2">
+                        <span class="medal">🥈</span>
+                    </div>
+                </div>
+                <!-- 1er Lugar -->
+                <div class="podium-item">
+                    <span class="algo-title">Quick Sort</span>
+                    <div class="podium-bar rank-1">
+                        <span class="medal">🥇</span>
+                    </div>
+                </div>
+                <!-- 3er Lugar -->
+                <div class="podium-item">
+                    <span class="algo-title">Insertion</span>
+                    <div class="podium-bar rank-3">
+                        <span class="medal">🥉</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABLA COMPARATIVA -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Algoritmo</th>
+                        <th>Velocidad (Promedio)</th>
+                        <th>Velocidad (Peor Caso)</th>
+                        <th>Veredicto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Quick Sort</strong></td>
+                        <td><span class="tag tag-fast">O(n log n)</span></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td>El más rápido en la práctica para la mayoría de casos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Merge Sort</strong></td>
+                        <td><span class="tag tag-fast">O(n log n)</span></td>
+                        <td><span class="tag tag-fast">O(n log n)</span></td>
+                        <td>Extremadamente fiable y estable. Ideal para grandes datos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Insertion Sort</strong></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td>Excelente solo para listas muy pequeñas o casi ordenadas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Selection Sort</strong></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td>Lento, pero útil si la memoria de escritura es muy costosa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Bubble Sort</strong></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td><span class="tag tag-slow">O(n²)</span></td>
+                        <td>Ineficiente. Solo uso educativo.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card" style="margin-top: 30px;">
+                <label>Nota sobre la Visualización</label>
+                <p class="complexity" style="color: var(--muted);">
+                    * Aunque <strong>Merge Sort</strong> es Teóricamente O(n log n), en nuestro visualizador puede parecer más lento (O(n²)) porque usamos una variante "In-Place" para poder animar el movimiento de las barras sin ocultarlas en arrays auxiliares.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        © 2025 SortVisor.
+    </div>
+</body>
+</html>
